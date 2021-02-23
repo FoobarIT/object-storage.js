@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing Storage Isssue</title>
+</head>
+<body>
+    
+
+    <script src="../storage-control.js"></script>
+    <script>
+        models = {
+            'nom': "Parker",
+            'prenom': "Steve",
+            'age': 14,
+            'adresse': "5 Rue Saint Martin"
+        }
+        SC.add("user", models)
+        SC.update('user', 'nom', 'Jackson')
+
+        let getData = SC.get("user");
+        
+        setTimeout(() => {
+            console.log(getData)
+        }, 2000);
+        
+    </script>
+</body>
+</html>
