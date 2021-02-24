@@ -6,7 +6,7 @@
 
 ### Docs
 
-###### SC.add(table, object);
+###### SC.add(table, model);
 ```js
 let userModel = {
   "name": "Steve",
@@ -28,6 +28,12 @@ SC.get("user")
 SC.update("user", "age", "15");
 ```
 *`Output: Here we edit the age of Steve to 15 year old.`*
+
+###### SC.delete(table);
+```js
+SC.delete("user");
+```
+*`Output: We delete the table (key & value)`*
 
 ##### Parameters
 |   Name |  Desc  |

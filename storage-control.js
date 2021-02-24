@@ -20,33 +20,25 @@
     'use strict';
 
     /** 
-    * @param {table} String 
-    * @summary - Is the key name of table creation. 
-    * 
-    * @param {object} Object
-    * @summary - Is the uniq possibility to create data with Storage Control.
+    * @param {String} table
+    * @param {Object} model
     */
-    SC.add = function(table, object) {
-        
+    SC.add = function(table, model) {
         /**
          * @todo 
          *  -We should check client stockage access. (Default 5mo)
          */
-
-        if (typeof object != "object"){
-            console.error('SC error: Sorry but this ('+object+') is not a object..')
+        if (typeof model != "object"){
+            console.error('SC error: Sorry but this ('+model+') is not a object..')
         } else {
-            return localStorage.setItem(table, JSON.stringify(object));
+            return localStorage.setItem(table, JSON.stringify(model));
             
         }
-        
     }
 
     /**
-     * @param {table} String
-     * @summary - The name of key to localStorage in this we call table.
+     * @param {String} table
      */
-
     SC.get = function(table) {
         let getTable = localStorage.getItem(table); 
         if (getTable == null || getTable == undefined) {
@@ -56,6 +48,11 @@
         }
     }
 
+    /**
+     * @param {String} table 
+     * @param {String} key 
+     * @param {String, Number, Boolean} value 
+     */
     SC.update = function(table, key, value) {
         let getTable = localStorage.getItem(table); 
         if (getTable == null || getTable == undefined) {
@@ -67,6 +64,17 @@
         }
     }
 
+    /** 
+     * @param {String} table 
+    */
+    SC.delete = function(table) {
+        let getTable = localStorage.getItem(table); 
+        if (getTable == null || getTable == undefined) {
+            console.error('SC Error: Table is not valid or undefined')
+        } else {
+            localStorage.removeItem(table);
+        }
+    }
 
 
     return SC
