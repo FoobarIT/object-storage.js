@@ -56,7 +56,7 @@
      */
     OS.get = function(table) {
         let getTable = localStorage.getItem(table); 
-        if (getTable == null || getTable == undefined) {
+        if (getTable == null) {
             console.error('SC Error: Table is not valid or undefined')
         } else {
             return JSON.parse(getTable);
@@ -70,7 +70,7 @@
      */
     OS.update = function(table, key, value) {
         let getTable = localStorage.getItem(table); 
-        if (getTable == null || getTable == undefined) {
+        if (getTable == null) {
             console.error('SC Error: Table is not valid or undefined')
         } else {
             getTable = getTable ? JSON.parse(getTable) : {};
@@ -84,7 +84,7 @@
     */
     OS.delete = function(table) {
         let getTable = localStorage.getItem(table);
-        getTable == null || getTable == undefined ? console.error('OS Error: Table is not valid or undefined') : localStorage.removeItem(table);
+        getTable == null ? console.error('OS Error: Table is not valid or undefined') : localStorage.removeItem(table);
     }
 
     OS.infos = function() {
