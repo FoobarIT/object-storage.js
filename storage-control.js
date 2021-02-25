@@ -20,8 +20,8 @@
     'use strict';
 
     //Variable performance defined
-    let keyTotal = localStorage.length;
-    let keyData = (Object.entries(localStorage))
+    const keyTotal = localStorage.length;
+    const keyData = (Object.entries(localStorage))
 
     // Temp function to check size using.
     let localStorageSpace = function(){
@@ -57,7 +57,7 @@
     OS.get = function(table) {
         let getTable = localStorage.getItem(table); 
         if (getTable == null) {
-            console.error('SC Error: Table is not valid or undefined')
+            console.error('OS Error: Table is not valid or undefined')
         } else {
             return JSON.parse(getTable);
         }
@@ -65,17 +65,31 @@
 
     /**
      * @param {String} table 
-     * @param {String} key 
+     * @param {String} property
      * @param {String, Number, Boolean} value 
      */
-    OS.update = function(table, key, value) {
+    OS.update = function(table, property, value) {
         let getTable = localStorage.getItem(table); 
         if (getTable == null) {
-            console.error('SC Error: Table is not valid or undefined')
+            console.error('OS Error: Table is not valid or undefined')
         } else {
             getTable = getTable ? JSON.parse(getTable) : {};
-            getTable[key] = value; 
+            getTable[property] = value;
             localStorage.setItem(table, JSON.stringify(getTable));
+        }
+    }
+
+    /**
+     * @param {String} table
+     * @param {String} property
+     */
+    OS.select = function (table, property) {
+        let getTable = localStorage.getItem(table);
+        if (getTable == null) {
+            console.error('OS Error: Table is not valid or undefined')
+        } else {
+            getTable = getTable ? JSON.parse(getTable) : {};
+            return getTable[property];
         }
     }
 
