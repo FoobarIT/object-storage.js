@@ -6,38 +6,38 @@
 
 ### Docs
 
-###### SC.add(table, model);
+###### OS.add(table, model);
 ```js
 let userModel = {
   "name": "Steve",
   "fullname": "Jackson",
   "age": 14
 }
-SC.add("user", userModel)
+OS.add("user", userModel)
 ```
 *`Output: You have creating an table user with name, fullname and age models`*
 
-###### SC.get(table);
+###### OS.get(table);
 ```js
-SC.get("user")
+OS.get("user")
 ```
 *`Output: Here we get the user table`*
 
-###### SC.update(table, key, value);
+###### OS.update(table, key, value);
 ```js
-SC.update("user", "age", "15");
+OS.update("user", "age", "15");
 ```
 *`Output: Here we edit the age of Steve to 15 year old.`*
 
-###### SC.delete(table);
+###### OS.delete(table);
 ```js
-SC.delete("user");
+OS.delete("user");
 ```
 *`Output: We delete the table (key & value)`*
 
-###### SC.infos();
+###### OS.infos();
 ```js
-SC.infos();
+OS.infos();
 ```
 *`Output: Give some informations of API and localStorage`*
 

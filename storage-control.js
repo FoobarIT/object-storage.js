@@ -10,13 +10,13 @@
         }
     } else if (typeof define === 'function' && define.amd) {
         define(['exports'], function(exports) {
-            root.SC = factory(root, exports);
+            root.OS = factory(root, exports);
         });
     } else {
-        root.SC = factory(root, {});
+        root.OS = factory(root, {});
     }
 
-}(this, function(root, SC) {
+}(this, function(root, OS) {
     'use strict';
 
     //Variable performance defined
@@ -38,7 +38,7 @@
     * @param {String} table
     * @param {Object} model
     */
-    SC.add = function(table, model) {
+    OS.add = function(table, model) {
         /**
          * @todo 
          *  -We should check client stockage access. (Default 5mo)
@@ -54,7 +54,7 @@
     /**
      * @param {String} table
      */
-    SC.get = function(table) {
+    OS.get = function(table) {
         let getTable = localStorage.getItem(table); 
         if (getTable == null || getTable == undefined) {
             console.error('SC Error: Table is not valid or undefined')
@@ -68,7 +68,7 @@
      * @param {String} key 
      * @param {String, Number, Boolean} value 
      */
-    SC.update = function(table, key, value) {
+    OS.update = function(table, key, value) {
         let getTable = localStorage.getItem(table); 
         if (getTable == null || getTable == undefined) {
             console.error('SC Error: Table is not valid or undefined')
@@ -82,14 +82,14 @@
     /** 
      * @param {String} table 
     */
-    SC.delete = function(table) {
+    OS.delete = function(table) {
         let getTable = localStorage.getItem(table);
-        getTable == null || getTable == undefined ? console.error('SC Error: Table is not valid or undefined') : localStorage.removeItem(table);
+        getTable == null || getTable == undefined ? console.error('OS Error: Table is not valid or undefined') : localStorage.removeItem(table);
     }
 
-    SC.infos = function() {
-        console.group('Storage Control Infos');
-        console.log(`Storage Control - 0.1v`);
+    OS.infos = function() {
+        console.group('Object Storage Infos');
+        console.log(`Object Storage - 0.1v`);
         console.log(`Size Usage: `+ localStorageSpace())
         console.log(`Table Count: `+ keyTotal);
         console.log(`Table View -> `)
@@ -98,5 +98,5 @@
         console.groupEnd()
     }
 
-    return SC
+    return OS
 }))

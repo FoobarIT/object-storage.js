@@ -7,7 +7,7 @@
     <title>Testing Storage Isssue</title>
 </head>
 <body>
-    <button onclick="SC.delete('user')">Delete Table</button>
+    <button onclick="OS.delete('user')">Delete Table</button>
     <button>Purge Table</button>
 
     <script src="../storage-control.js"></script>
@@ -24,18 +24,18 @@
             
            
         }
-        SC.add("user", models)
-        SC.add("msg", msg)
-        SC.update('user', 'nom', 'Jackson')
+        OS.add("user", models)
+        OS.add("msg", msg)
+        OS.update('user', 'nom', 'Jackson')
 
-        let getUser = SC.get("user");
-        let getMsg = SC.get("msg")
+        let getUser = OS.get("user");
+        let getMsg = OS.get("msg")
         
         setTimeout(() => {
             console.log(getUser, getMsg)
         }, 2000);
         
-        SC.infos()
+        OS.infos()
     </script>
 </body>
 </html>
