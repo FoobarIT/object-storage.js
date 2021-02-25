@@ -1,8 +1,16 @@
-### Features 0.1v
-
-- Create data with object model.
-- Get data object
-- Update Data object
+## Change Log
+#### Update 0.2v
+- Select specific property of model object. (```OS.select(table, property)```)
+- Addition of several exceptions and error handling.
+- Several refactors from the library.
+- Fix a lot of bugs and performance increase
+  .
+#### Update 0.1v
+- Create data with object model. (```OS.add(table, model)```)
+- Get data object. (```OS.get(table)```)
+- Update Data object. (```OS.update(table, property, value)```)
+- Delete "Table" & value. (```OS.delete(table)```)
+- Get some information from API & localStorage.(```OS.infos()```)
 
 ### Docs
 
