@@ -60,5 +60,5 @@ OS.infos();
 | ------------ | ------------ |
 | table | *String*  |
 | object | *Object*  |
-| key | *String*, *Number*, *Boolean*|
+| property | *String*, *Number*, *Boolean*|
 
