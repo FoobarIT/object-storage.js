@@ -35,6 +35,12 @@ SC.delete("user");
 ```
 *`Output: We delete the table (key & value)`*
 
+###### SC.infos();
+```js
+SC.infos();
+```
+*`Output: Give some informations of API and localStorage`*
+
 ##### Parameters
 |   Name |  Desc  |
 | ------------ | ------------ |

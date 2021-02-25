@@ -18,15 +18,24 @@
             'age': 14,
             'adresse': "5 Rue Saint Martin"
         }
+        msg = {
+            'pseudo': "Stevrr",
+            'message': "I love you, contribute on my project",
+            
+           
+        }
         SC.add("user", models)
+        SC.add("msg", msg)
         SC.update('user', 'nom', 'Jackson')
 
-        let getData = SC.get("user");
+        let getUser = SC.get("user");
+        let getMsg = SC.get("msg")
         
         setTimeout(() => {
-            console.log(getData)
+            console.log(getUser, getMsg)
         }, 2000);
         
+        SC.infos()
     </script>
 </body>
 </html>
