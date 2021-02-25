@@ -1,18 +1,10 @@
-## Change Log
-#### Update 0.2v
-- Select specific property of model object. (```OS.select(table, property)```)
-- Addition of several exceptions and error handling.
-- Several refactors from the library.
-- Fix a lot of bugs and performance increase
-.
-#### Update 0.1v
-- Create data with object model. (```OS.add(table, model)```)
-- Get data object. (```OS.get(table)```)
-- Update Data object. (```OS.update(table, key, value)```)
-- Delete "Table" & value. (```OS.delete(table)```)
-- Get some information from API & localStorage.(```OS.infos()```)
+### Features 0.1v
 
-## Docs
+- Create data with object model.
+- Get data object
+- Update Data object
+
+### Docs
 
 ###### OS.add(table, model);
 ```js
@@ -37,6 +29,12 @@ OS.update("user", "age", "15");
 ```
 *`Output: Here we edit the age of Steve to 15 year old.`*
 
+###### OS.select(table, property);
+```js
+OS.select("user", "age");
+```
+*`Output: Here we select property of specific table. (15)`*
+
 ###### OS.delete(table);
 ```js
 OS.delete("user");
@@ -54,5 +52,5 @@ OS.infos();
 | ------------ | ------------ |
 | table | *String*  |
 | object | *Object*  |
-| property | *String*, *Number*, *Boolean*|
+| key | *String*, *Number*, *Boolean*|
 
