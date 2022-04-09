@@ -1,4 +1,13 @@
 ## Change Log
+#### Update 0.3v
+- [ ] Object storage will now use a single key in the localstorage.
+- [ ] Now hashing data in localStorage.
+- [ ] Now verify the localStorage data left before execute ```OS.add(table, model)```
+- [ ] findOne function.
+- [ ] findAll function.
+- [ ] Rewriting of the tests
+- Refactoring some code.
+
 #### Update 0.2v
 - Select specific property of model object. (```OS.select(table, property)```)
 - Addition of several exceptions and error handling.
@@ -53,7 +62,7 @@ OS.delete("user");
 ```js
 OS.infos();
 ```
-*`Output: Give some informations of API and localStorage`*
+*`Output: Give some information's of API and local Storage`*
 
 ##### Parameters
 |   Name |  Desc  |
@@ -61,4 +70,3 @@ OS.infos();
 | table | *String*  |
 | object | *Object*  |
 | property | *String*, *Number*, *Boolean*|
-

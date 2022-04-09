@@ -20,8 +20,10 @@
     'use strict';
 
     //Variable performance defined
-    let keyTotal = localStorage.length;
-    let keyData = (Object.entries(localStorage))
+    const key = {
+        total : localStorage.length,
+        data: (Object.entries(localStorage))
+    }
 
     // Temp function to check size using.
     let localStorageSpace = function(){
@@ -34,6 +36,44 @@
         return allStrings ? 3 + ((allStrings.length*16)/(8*1024)).toFixed(2) + 'KB / 5MB' : 'Empty (0 KB)';
     };
 
+
+
+    /** 
+    * @param {string} name
+    * @param {boolean} logs
+    */
+    OS.create = (options) => {
+        
+        if (typeof options.name!= 'string') {
+            console.error('[OS ERRROR]: The parameter name should be a string type.')
+        } else {
+            localStorage.setItem(options.name, JSON.stringify([]) )
+            options.logs ? console.info(`[OS INFO]: Database ${options.name} created. Storage Indice: ${localStorageSpace()}`) : ''
+        }
+    }
+
+    
+    /**
+     * @param {string} database 
+     * @param {string} name 
+     */
+    OS.addTable = (database, name) => {
+        if (typeof database === 'string') {
+            let getDatabase = JSON.parse(localStorage.getItem(database))
+            console.log(getDatabase, typeof getDatabase)
+            if (getDatabase != null) {        
+                getDatabase[`${name}`] = []
+                console.log('check', JSON.stringify(getDatabase))
+                localStorage.setItem(database, JSON.stringify(getDatabase));
+
+                console.info(`[OS INFO]: Table ${name} has been created. Storage Indice: ${localStorageSpace()}`)
+
+            } else {
+                console.error(`[OS ERROR]: This database does not exist.`)
+            }          
+        } 
+    }
+
     /** 
     * @param {String} table
     * @param {Object} model
@@ -44,10 +84,9 @@
          *  -We should check client stockage access. (Default 5mo)
          */
         if (typeof model != "object"){
-            console.error('SC error: Sorry but this ('+model+') is not a object..')
+            console.error('[OS ERROR]: Sorry but this ('+model+') is not a object.')
         } else {
             return localStorage.setItem(table, JSON.stringify(model));
-            
         }
     }
 
@@ -57,7 +96,7 @@
     OS.get = function(table) {
         let getTable = localStorage.getItem(table); 
         if (getTable == null) {
-            console.error('SC Error: Table is not valid or undefined')
+            console.error('[OS ERROR]: Table is not valid or undefined')
         } else {
             return JSON.parse(getTable);
         }
@@ -71,7 +110,7 @@
     OS.update = function(table, key, value) {
         let getTable = localStorage.getItem(table); 
         if (getTable == null) {
-            console.error('SC Error: Table is not valid or undefined')
+            console.error('[OS ERROR]: Table is not valid or undefined')
         } else {
             getTable = getTable ? JSON.parse(getTable) : {};
             getTable[key] = value; 
@@ -84,16 +123,16 @@
     */
     OS.delete = function(table) {
         let getTable = localStorage.getItem(table);
-        getTable == null ? console.error('OS Error: Table is not valid or undefined') : localStorage.removeItem(table);
+        getTable == null ? console.error('[OS ERROR]: Table is not valid or undefined') : localStorage.removeItem(table);
     }
 
     OS.infos = function() {
         console.group('Object Storage Infos');
         console.log(`Object Storage - 0.1v`);
         console.log(`Size Usage: `+ localStorageSpace())
-        console.log(`Table Count: `+ keyTotal);
+        console.log(`Table Count: `+ key.total);
         console.log(`Table View -> `)
-        console.log(keyData)
+        console.log(key.data)
         console.log('Author: Dany Demart | https://github.com/FoobarIT/storage-control')
         console.groupEnd()
     }
