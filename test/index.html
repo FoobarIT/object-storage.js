@@ -15,9 +15,8 @@
         
         OS.create({
             name: 'myDatabase',
-            logs: true,
+            logs: false,
         })
-    
        
         let user = {
             'nom': "Parker",
@@ -25,21 +24,13 @@
             'age': 14,
             'adresse': "5 Rue Saint Martin"
         }
-       let users = {}
-        OS.addTable('myDatabase', 'user')
 
-
-        console.log(OS.get('myDatabase').user, 'lol')
-        // OS.add("user", models)
-        // OS.add("msg", msg)
-        // OS.update('user', 'nom', 'Jackson')
-
-        // let getUser = OS.get("user");
-        // let getMsg = OS.get("msg")
-        
-        // setTimeout(() => {
-        //     console.log(getUser, getMsg)
-        // }, 2000);
+       
+        OS.addTable({
+            database: 'myDatabase',
+            name: 'user',
+        })
+    
         
         OS.infos()
     </script>

@@ -55,22 +55,24 @@
     
     /**
      * @param {string} database 
-     * @param {string} name 
+     * @param {string} nameTable
+     * @param {object} object
      */
-    OS.addTable = (database, name) => {
-        if (typeof database === 'string') {
-            let getDatabase = JSON.parse(localStorage.getItem(database))
+    OS.addTable = (options) => {
+        if (typeof options.database === 'string') {
+            let getDatabase = JSON.parse(localStorage.getItem(options.database))
             console.log(getDatabase, typeof getDatabase)
-            if (getDatabase != null) {        
-                getDatabase[`${name}`] = []
-                console.log('check', JSON.stringify(getDatabase))
-                localStorage.setItem(database, JSON.stringify(getDatabase));
+                getDatabase = options.name
+                
+                console.log('GetDatabase', getDatabase)
 
-                console.info(`[OS INFO]: Table ${name} has been created. Storage Indice: ${localStorageSpace()}`)
+                localStorage.setItem(options.database, JSON.stringify(getDatabase))
+            
+                //console.info(`[OS INFO]: Table (${options.name}) insert on (${options.database}). Storage Indice: ${localStorageSpace()}`)
 
-            } else {
-                console.error(`[OS ERROR]: This database does not exist.`)
-            }          
+        
+                //console.error(`[OS ERROR]: This database does not exist.`)
+                      
         } 
     }
 
