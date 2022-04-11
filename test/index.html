@@ -10,36 +10,30 @@
     <button onclick="OS.delete('user')">Delete Table</button>
     <button>Purge Table</button>
 
-    <script src="../object-storage.js"></script>
+    <script src="../storage-control.js"></script>
     <script>
-        
-        OS.create({
-            name: 'myDatabase',
-            logs: true,
-        })
-    
-       
-        let user = {
+        models = {
             'nom': "Parker",
             'prenom': "Steve",
             'age': 14,
             'adresse': "5 Rue Saint Martin"
         }
-       let users = {}
-        OS.addTable('myDatabase', 'user')
+        msg = {
+            'pseudo': "Stevrr",
+            'message': "I love you, contribute on my project",
+            
+           
+        }
+        OS.add("user", models)
+        OS.add("msg", msg)
+        OS.update('user', 'nom', 'Jackson')
 
-
-        console.log(OS.get('myDatabase').user, 'lol')
-        // OS.add("user", models)
-        // OS.add("msg", msg)
-        // OS.update('user', 'nom', 'Jackson')
-
-        // let getUser = OS.get("user");
-        // let getMsg = OS.get("msg")
+        let getUser = OS.get("user");
+        let getMsg = OS.get("msg")
         
-        // setTimeout(() => {
-        //     console.log(getUser, getMsg)
-        // }, 2000);
+        setTimeout(() => {
+            console.log(getUser, getMsg)
+        }, 2000);
         
         OS.infos()
     </script>
